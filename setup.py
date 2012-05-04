@@ -50,6 +50,10 @@ _re2_prefixes = [
     '/opt/',
     ]
 
+# if we are in a virtual environment, also append its directories too
+if os.getenv('VIRTUAL_ENV'):
+    _re2_prefixes.append(os.getenv('VIRTUAL_ENV'))
+
 for re2_prefix in _re2_prefixes:
     if os.path.exists(os.path.join(re2_prefix, "include", "re2")):
         break
